@@ -1,0 +1,561 @@
+{
+	"info": {
+		"_postman_id": "2d372eb8-bed2-44c4-a329-402b60bcb9a5",
+		"name": "ZZZ KAMBAL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4313773"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create User Account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "role",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"ison\", \n    \"password\": \"gwapoko\",\n    \"userRole\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3079/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3079",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"dangie\", \n    \"password\": \"kambal\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3079/api/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3079",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"ison\", \n    \"oldPassword\": \"gwapoko\",\n    \"newPassword\": \"hello\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3079/api/users/update-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3079",
+							"path": [
+								"api",
+								"users",
+								"update-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Item",
+			"item": [
+				{
+					"name": "Get items",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "role",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"ison\", \n    \"password\": \"fdfdh\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3079/api/items",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3079",
+							"path": [
+								"api",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Cabbage\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3079/api/items",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3079",
+							"path": [
+								"api",
+								"items"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Create Customer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "role",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"kim\", \n    \"balance\": 100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3079/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3079",
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List customers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "role",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"dangie\", \n    \"balance\": 100000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3079/api/customers?offset=0&limit=2&order=balance,DESC",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3079",
+							"path": [
+								"api",
+								"customers"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "ang",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "2"
+								},
+								{
+									"key": "order",
+									"value": "balance,DESC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get customer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "role",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"dangie\", \n    \"balance\": 100000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3079/api/customers/fe20c99f-4700-4e62-a2bf-1f18980bd108",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3079",
+							"path": [
+								"api",
+								"customers",
+								"fe20c99f-4700-4e62-a2bf-1f18980bd108"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add transaction",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "role",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"shipmentDate\": \"10/17/2023\", \n    \"shipmentCost\": 1000,\n    \"items\": [\n        {\n            \"item\": \"Cabbage\",\n            \"currentPrice\": 120,\n            \"kilos\": 5\n        },\n        {\n            \"item\": \"Atchal\",\n            \"currentPrice\": 240,\n            \"kilos\": 10\n        },\n        {\n            \"item\": \"Onion\",\n            \"currentPrice\": 750,\n            \"kilos\": 15\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3079/api/customers/fe20c99f-4700-4e62-a2bf-1f18980bd108/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3079",
+							"path": [
+								"api",
+								"customers",
+								"fe20c99f-4700-4e62-a2bf-1f18980bd108",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List transactions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "role",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"dangie\", \n    \"balance\": 100000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3079/api/customers/fe20c99f-4700-4e62-a2bf-1f18980bd108/transactions?offset=0&limit=1&order=shipmentCost,ASC",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3079",
+							"path": [
+								"api",
+								"customers",
+								"fe20c99f-4700-4e62-a2bf-1f18980bd108",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "shipmentDate",
+									"value": "10/16/2023",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "1"
+								},
+								{
+									"key": "order",
+									"value": "shipmentCost,ASC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transaction",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "role",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"dangie\", \n    \"balance\": 100000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3079/api/customers/fe20c99f-4700-4e62-a2bf-1f18980bd108/transactions/5c83c473-16e2-465d-a5e1-3b9931abd8c0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3079",
+							"path": [
+								"api",
+								"customers",
+								"fe20c99f-4700-4e62-a2bf-1f18980bd108",
+								"transactions",
+								"5c83c473-16e2-465d-a5e1-3b9931abd8c0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "role",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"paymentDate\": \"10/17/2023\", \n    \"amount\": 20000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3079/api/customers/fe20c99f-4700-4e62-a2bf-1f18980bd108/payments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3079",
+							"path": [
+								"api",
+								"customers",
+								"fe20c99f-4700-4e62-a2bf-1f18980bd108",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Payments",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "role",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"dangie\", \n    \"balance\": 100000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3079/api/customers/fe20c99f-4700-4e62-a2bf-1f18980bd108/payments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3079",
+							"path": [
+								"api",
+								"customers",
+								"fe20c99f-4700-4e62-a2bf-1f18980bd108",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "role",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3079/api/customers/fe20c99f-4700-4e62-a2bf-1f18980bd108/payments/0098e83e-40eb-41be-a89a-755387bcde36",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3079",
+							"path": [
+								"api",
+								"customers",
+								"fe20c99f-4700-4e62-a2bf-1f18980bd108",
+								"payments",
+								"0098e83e-40eb-41be-a89a-755387bcde36"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
