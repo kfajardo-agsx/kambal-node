@@ -30,12 +30,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3079/api/users",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/users",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "3079",
 							"path": [
 								"api",
 								"users"
@@ -59,12 +57,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3079/api/users/login",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/users/login",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "3079",
 							"path": [
 								"api",
 								"users",
@@ -89,12 +85,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3079/api/users/update-password",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/users/update-password",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "3079",
 							"path": [
 								"api",
 								"users",
@@ -111,9 +105,6 @@
 			"item": [
 				{
 					"name": "Get items",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [
@@ -123,22 +114,11 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"username\": \"ison\", \n    \"password\": \"fdfdh\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "http://localhost:3079/api/items",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/items",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "3079",
 							"path": [
 								"api",
 								"items"
@@ -162,12 +142,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3079/api/items",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/items",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "3079",
 							"path": [
 								"api",
 								"items"
@@ -183,6 +161,22 @@
 			"item": [
 				{
 					"name": "Create Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"    pm.environment.set(\"CUSTOMER_ID\", jsonData.id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -194,7 +188,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"kim\", \n    \"balance\": 100\n}",
+							"raw": "{\n    \"name\": \"cas\", \n    \"balance\": 1000\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -202,12 +196,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3079/api/customers",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/customers",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "3079",
 							"path": [
 								"api",
 								"customers"
@@ -240,22 +232,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3079/api/customers?offset=0&limit=2&order=balance,DESC",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/customers?offset=0&limit=2&order=balance,DESC",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "3079",
 							"path": [
 								"api",
 								"customers"
 							],
 							"query": [
-								{
-									"key": "name",
-									"value": "ang",
-									"disabled": true
-								},
 								{
 									"key": "offset",
 									"value": "0"
@@ -267,6 +252,11 @@
 								{
 									"key": "order",
 									"value": "balance,DESC"
+								},
+								{
+									"key": "name",
+									"value": "ang",
+									"disabled": true
 								}
 							]
 						}
@@ -297,16 +287,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3079/api/customers/fe20c99f-4700-4e62-a2bf-1f18980bd108",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/customers/{{CUSTOMER_ID}}",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "3079",
 							"path": [
 								"api",
 								"customers",
-								"fe20c99f-4700-4e62-a2bf-1f18980bd108"
+								"{{CUSTOMER_ID}}"
 							]
 						}
 					},
@@ -314,6 +302,22 @@
 				},
 				{
 					"name": "Add transaction",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"    pm.environment.set(\"TRANSACTION_ID\", jsonData.id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -333,16 +337,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3079/api/customers/fe20c99f-4700-4e62-a2bf-1f18980bd108/transactions",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/customers/{{CUSTOMER_ID}}/transactions",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "3079",
 							"path": [
 								"api",
 								"customers",
-								"fe20c99f-4700-4e62-a2bf-1f18980bd108",
+								"{{CUSTOMER_ID}}",
 								"transactions"
 							]
 						}
@@ -373,16 +375,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3079/api/customers/fe20c99f-4700-4e62-a2bf-1f18980bd108/transactions?offset=0&limit=1&order=shipmentCost,ASC",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/customers/{{CUSTOMER_ID}}/transactions?offset=0&limit=1&order=shipmentCost,ASC",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "3079",
 							"path": [
 								"api",
 								"customers",
-								"fe20c99f-4700-4e62-a2bf-1f18980bd108",
+								"{{CUSTOMER_ID}}",
 								"transactions"
 							],
 							"query": [
@@ -432,18 +432,16 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3079/api/customers/fe20c99f-4700-4e62-a2bf-1f18980bd108/transactions/5c83c473-16e2-465d-a5e1-3b9931abd8c0",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/customers/{{CUSTOMER_ID}}/transactions/{{TRANSACTION_ID}}",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "3079",
 							"path": [
 								"api",
 								"customers",
-								"fe20c99f-4700-4e62-a2bf-1f18980bd108",
+								"{{CUSTOMER_ID}}",
 								"transactions",
-								"5c83c473-16e2-465d-a5e1-3b9931abd8c0"
+								"{{TRANSACTION_ID}}"
 							]
 						}
 					},
@@ -451,6 +449,22 @@
 				},
 				{
 					"name": "Add payment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"    pm.environment.set(\"PAYMENT_ID\", jsonData.id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -470,16 +484,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3079/api/customers/fe20c99f-4700-4e62-a2bf-1f18980bd108/payments",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/customers/{{CUSTOMER_ID}}/payments",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "3079",
 							"path": [
 								"api",
 								"customers",
-								"fe20c99f-4700-4e62-a2bf-1f18980bd108",
+								"{{CUSTOMER_ID}}",
 								"payments"
 							]
 						}
@@ -510,16 +522,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3079/api/customers/fe20c99f-4700-4e62-a2bf-1f18980bd108/payments",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/customers/{{CUSTOMER_ID}}/payments",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "3079",
 							"path": [
 								"api",
 								"customers",
-								"fe20c99f-4700-4e62-a2bf-1f18980bd108",
+								"{{CUSTOMER_ID}}",
 								"payments"
 							]
 						}
@@ -538,18 +548,16 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3079/api/customers/fe20c99f-4700-4e62-a2bf-1f18980bd108/payments/0098e83e-40eb-41be-a89a-755387bcde36",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/customers/{{CUSTOMER_ID}}/payments/{{PAYMENT_ID}}",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "3079",
 							"path": [
 								"api",
 								"customers",
-								"fe20c99f-4700-4e62-a2bf-1f18980bd108",
+								"{{CUSTOMER_ID}}",
 								"payments",
-								"0098e83e-40eb-41be-a89a-755387bcde36"
+								"{{PAYMENT_ID}}"
 							]
 						}
 					},
